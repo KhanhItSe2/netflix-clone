@@ -1,0 +1,62 @@
+<!-- backdrop Star -->
+<div class="container-fluid">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div
+        class="carousel-item active"
+        data-bs-interval="5000"
+        *ngFor="let backdrop of backdropResult; let i = index"
+        [ngClass]="{ active: i === 1 }"
+      >
+        <img
+          src="https://image.tmdb.org/t/p/original/{{ backdrop.backdrop_path }}"
+          class="d-block w-100"
+          alt="{{ backdrop.name }}"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="carousel-title">
+            {{ backdrop.original_title || backdrop.name }}
+          </h2>
+          <p class="carousel-overview">{{ backdrop.overview }}</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<!-- backdrop end -->
+
+<div class="contain mt-3 p-2">
+  <!-- Trending Movies -->
+  <div class="row">
+    <h5 class="row-title text-white">Trending Movies</h5>
+    <div class="row-poster">
+      <ng-container *ngFor="let trendMovie of trendingMovieResult">
+        <img
+          src="https://image.tmdb.org/t/p/original/{{
+            trendMovie.backdrop_path
+          }}"
+          class="row-img"
+          alt="{{ trendMovie.name}}"
+        />
+      </ng-container>
+    </div>
+  </div>
+</div>

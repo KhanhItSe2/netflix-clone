@@ -1,0 +1,54 @@
+.carousel-inner {
+  height: 700px;
+}
+
+.carousel-inner .carousel-item img {
+  height: 700px;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.carousel-inner .carousel-caption {
+  color: #fff;
+}
+.carousel-caption .carousel-title {
+  font-size: xxx-large;
+}
+.carousel-caption .carousel-overview {
+  font-size: large;
+  font-weight: 300;
+}
+
+.row {
+  margin-left: 60px
+}
+.row-title {
+  font-size: 1.4vw;
+  line-height: 1.25vw;
+  margin-bottom: 16px;
+}
+.row-poster {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+
+.row-img {
+  max-height: 200px;
+  object-fit: contain;
+  width: 100%;
+  box-sizing: content-box;
+  transition: transform 450ms;
+  margin-right: 16px
+}
+
+.row-img:hover {
+  transform: scale(1.09);
+  cursor: pointer;
+}
+
+.row-poster::-webkit-scrollbar{
+  display: none;
+}
+
