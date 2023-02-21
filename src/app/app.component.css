@@ -1,16 +1,19 @@
 .navbar .navbar-brand {
-  color: #E50914;
+  color: #e50914;
   font-weight: bold;
   font-size: xx-large;
   padding-right: 42px;
   margin-left: 60px;
 }
 
-
-.navbar-nav .nav-link{
+.navbar-nav .nav-link {
   color: #fff;
   font-size: large;
   padding: 10px;
   margin: 0 15px;
   font-weight: 200;
+}
+.navbar-brand:hover,
+.nav-link:hover {
+  opacity: 0.8;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
+import { MovieApiService } from 'src/app/service/movie-api-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service.servic
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private service: MovieApiServiceService) {}
+  constructor(private apiService: MovieApiService) {}
 
   backdropResult : any = []
   trendingMovieResult: any = []
@@ -19,14 +19,14 @@ export class HomeComponent implements OnInit {
   }
 
   backdropData() {
-    this.service.backdropApiData().subscribe((data) => {
+    this.apiService.backdropApiData().subscribe((data) => {
 
       this.backdropResult = data.results;
     })
   }
 
   trendingData() {
-    this.service.trendingApiData().subscribe((data) => {
+    this.apiService.trendingApiData().subscribe((data) => {
       console.log(data)
       this.trendingMovieResult = data.results
     })

@@ -7,7 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieApiServiceService } from './service/movie-api-service.service';
+import { MovieApiService } from './service/movie-api-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +16,7 @@ import { MovieApiServiceService } from './service/movie-api-service.service';
     MovieDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [MovieApiServiceService],
+  providers: [MovieApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
