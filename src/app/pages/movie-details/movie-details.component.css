@@ -1,0 +1,14 @@
+.detail__poster {
+  width: 100%;
+  height: auto;
+}
+
+.detail__title {
+  color: #fff;
+  font-weight: bold;
+}
+.detail__overview {
+  color: #fff;
+  font-weight: 200;
+
+}

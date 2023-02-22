@@ -1,33 +1,37 @@
-<div class="contain mt-5 p-5">
+<div class="search_container contain mt-5 p-5">
   <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
-    <div class="row">
+    <div class="search_row row">
       <div class="mb-3 col-lg-10">
         <input
           type="text"
-          class="form-control"
+          class="search_input form-control"
           formControlName="movieName"
           placeholder="Titles, people, genres"
         />
       </div>
       <div class="col-lg-2">
-        <button class="btn btn-md">Search</button>
+        <button class="search_btn btn btn-md">Search</button>
       </div>
     </div>
   </form>
 
-  <div class="row mt-5">
+  <div class="search__result row mt-5">
     <div class="col-lg-4" *ngFor="let result of searchResult">
-      <div class="row"*ngIf="result.poster_path">
-        <div class="col-lg-3 mt-4 mb-4" >
+      <div
+        class="row"
+        *ngIf="result.poster_path"
+        [routerLink]="['/movie', result.id]"
+      >
+        <div class="col-lg-3 mt-4 mb-4">
           <img
             src="https://image.tmdb.org/t/p/original/{{ result.poster_path }}"
-            class="row-img"
+            class="search__result__img"
             alt="{{ result.name }}"
           />
         </div>
-        <div class="col-lg-9 mt-4 mb-4">
-          <h5>{{ result.original_title }}</h5>
-          <p>{{ result.overview }}</p>
+        <div class="search__result__content col-lg-9 mt-4 mb-4">
+          <h5 class="search__result__content__title">{{ result.original_title }}</h5>
+          <p class="search__result__content__overview">{{ result.overview }}</p>
         </div>
       </div>
     </div>

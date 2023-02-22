@@ -11,6 +11,7 @@
         data-bs-interval="5000"
         *ngFor="let backdrop of backdropResult; let i = index"
         [ngClass]="{ active: i === 1 }"
+        [routerLink]="['/movie',backdrop.id]"
       >
         <img
           src="https://image.tmdb.org/t/p/original/{{ backdrop.backdrop_path }}"
@@ -50,13 +51,14 @@
 <div class="contain mt-3 p-2">
   <!-- Trending Movies -->
   <div class="row">
-    <h5 class="row-title text-white">Trending Movies</h5>
-    <div class="row-poster">
+    <h5 class="row__title text-white">Trending Movies</h5>
+    <div class="row__poster">
       <ng-container *ngFor="let trendMovie of trendingMovieResult">
         <img
           src="https://image.tmdb.org/t/p/original/{{ trendMovie.poster_path }}"
-          class="row-img"
+          class="row__img"
           alt="{{ trendMovie.name }}"
+          [routerLink]="['/movie',trendMovie.id]"
         />
       </ng-container>
     </div>

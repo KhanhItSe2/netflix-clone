@@ -7,16 +7,16 @@ import { MovieApiService } from 'src/app/service/movie-api-service.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  constructor(private searchService: MovieApiService) {}
+  constructor(private apiService: MovieApiService) {}
   ngOnInit(): void {}
 
   searchResult: any = [];
   searchForm = new FormGroup({
-    movieName: new FormControl(null),
+    movieName: new FormControl(),
   });
 
   submitForm() {
-    this.searchService
+    this.apiService
       .getSearchMovie(this.searchForm.value)
       .subscribe((result) => {
         console.log(result);

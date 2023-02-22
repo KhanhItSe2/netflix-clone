@@ -1,5 +1,6 @@
 .carousel-inner {
   height: 700px;
+  cursor: pointer;
 }
 
 .carousel-inner .carousel-item img {
@@ -22,19 +23,19 @@
 .row {
   margin-left: 60px
 }
-.row-title {
+.row__title {
   font-size: 1.4vw;
   line-height: 1.25vw;
   margin-bottom: 16px;
 }
-.row-poster {
+.row__poster {
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
 }
 
 
-.row-img {
+.row__img {
   max-height: 200px;
   object-fit: contain;
   width: 100%;
@@ -43,12 +44,12 @@
   margin-right: 16px
 }
 
-.row-img:hover {
+.row__img:hover {
   transform: scale(1.09);
   cursor: pointer;
 }
 
-.row-poster::-webkit-scrollbar{
+.row__poster::-webkit-scrollbar{
   display: none;
 }
 
