@@ -1,6 +1,10 @@
-<!-- backdrop Star -->
+<!-- backdrop Start -->
 <div class="container-fluid">
-  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div
+    id="carouselExampleDark"
+    class="carousel carousel-dark slide"
+    data-bs-ride="carousel"
+  >
     <div class="carousel-inner">
       <div
         class="carousel-item active"
@@ -50,11 +54,9 @@
     <div class="row-poster">
       <ng-container *ngFor="let trendMovie of trendingMovieResult">
         <img
-          src="https://image.tmdb.org/t/p/original/{{
-            trendMovie.backdrop_path
-          }}"
+          src="https://image.tmdb.org/t/p/original/{{ trendMovie.poster_path }}"
           class="row-img"
-          alt="{{ trendMovie.name}}"
+          alt="{{ trendMovie.name }}"
         />
       </ng-container>
     </div>

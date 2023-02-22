@@ -1,0 +1,36 @@
+
+input {
+  font-weight: 300;
+  background-color: transparent;
+  color: #fff;
+
+}
+input::placeholder {
+  color: #fff;
+  margin-left: 25px;
+}
+input:focus {
+  background-color: transparent;
+  color: #fff;
+  border-color: none !important;
+}
+
+button {
+  background-color: #e50914;
+  color: #fff;
+  font-weight: 300;
+}
+
+button:hover {
+  background-color: #e50914;
+  color: #fff;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+img {
+  width: 100%;
+}
+h1 {
+  color: #fff;
+}

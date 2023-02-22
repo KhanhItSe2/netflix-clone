@@ -20,14 +20,12 @@ export class HomeComponent implements OnInit {
 
   backdropData() {
     this.apiService.backdropApiData().subscribe((data) => {
-
       this.backdropResult = data.results;
     })
   }
 
   trendingData() {
     this.apiService.trendingApiData().subscribe((data) => {
-      console.log(data)
       this.trendingMovieResult = data.results
     })
   }

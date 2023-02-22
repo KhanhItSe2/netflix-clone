@@ -20,7 +20,16 @@ export class MovieApiService {
   // trendingapidata
   trendingApi = `${this.baseUrl}/trending/movie/day?api_key=${this.apikey}`;
 
-  trendingApiData():Observable<any> {
-    return this.http.get(this.trendingApi)
+  trendingApiData(): Observable<any> {
+    return this.http.get(this.trendingApi);
+  }
+
+  // search
+
+  getSearchMovie(data: any): Observable<any> {
+    console.log(data);
+    return this.http.get(
+      `${this.baseUrl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`
+    );
   }
 }
