@@ -1,4 +1,5 @@
-.detail__poster {
+.detail__poster,
+.detail__cast__avatar {
   width: 100%;
   height: auto;
 }
@@ -10,5 +11,29 @@
 .detail__overview {
   color: #fff;
   font-weight: 200;
+}
 
+.detail__trailer {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.detail__trailer:hover {
+  opacity: 0.8;
+  background-color: #e50914;
+  color: #fff;
+}
+
+.detail__cast__title {
+  color: #fff;
+}
+
+.detail__cast__profile {
+  color: #fff;
+}
+.detail__cast__profile h3 {
+  font-weight: 300;
+}
+.detail__cast__profile p {
+  font-weight: 200;
 }

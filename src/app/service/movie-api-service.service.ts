@@ -33,7 +33,23 @@ export class MovieApiService {
   }
 
   // detail movie
-  getMovieDetails(data : any):Observable<any> {
-    return this.http.get(`${this.baseUrl}/movie/${data}?api_key=${this.apikey}`)
+  getMovieDetails(data: any): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/movie/${data}?api_key=${this.apikey}`
+    );
+  }
+
+  // movie video
+  getMovieVideo(data: any): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/movie/${data}/videos?api_key=${this.apikey}`
+    );
+  }
+
+  // movie Cast
+  getMovieCast(data: any): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/movie/${data}/credits?api_key=${this.apikey}`
+    );
   }
 }
