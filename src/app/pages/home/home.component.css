@@ -45,6 +45,7 @@
   width: 100%;
   box-sizing: content-box;
   transition: transform 450ms;
+  border-radius: 5px;
   margin-right: 16px
 }
 
