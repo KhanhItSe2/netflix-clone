@@ -7,11 +7,11 @@
   >
     <div class="carousel-inner">
       <div
-        class="carousel-item active"
+        class="carousel-item"
         data-bs-interval="5000"
         *ngFor="let backdrop of backdropResult; let i = index"
         [ngClass]="{ active: i === 1 }"
-        [routerLink]="['/movie',backdrop.id]"
+        [routerLink]="['/movie', backdrop.id]"
       >
         <img
           src="https://image.tmdb.org/t/p/original/{{ backdrop.backdrop_path }}"
@@ -58,7 +58,7 @@
           src="https://image.tmdb.org/t/p/original/{{ trendMovie.poster_path }}"
           class="row__img"
           alt="{{ trendMovie.name }}"
-          [routerLink]="['/movie',trendMovie.id]"
+          [routerLink]="['/movie', trendMovie.id]"
         />
       </ng-container>
     </div>
@@ -73,7 +73,7 @@
           src="https://image.tmdb.org/t/p/original/{{ action.poster_path }}"
           class="row__img"
           alt="{{ action.name }}"
-          [routerLink]="['/movie',action.id]"
+          [routerLink]="['/movie', action.id]"
         />
       </ng-container>
     </div>
@@ -87,7 +87,7 @@
           src="https://image.tmdb.org/t/p/original/{{ adventure.poster_path }}"
           class="row__img"
           alt="{{ adventure.name }}"
-          [routerLink]="['/movie',adventure.id]"
+          [routerLink]="['/movie', adventure.id]"
         />
       </ng-container>
     </div>
@@ -102,7 +102,7 @@
           src="https://image.tmdb.org/t/p/original/{{ animation.poster_path }}"
           class="row__img"
           alt="{{ animation.name }}"
-          [routerLink]="['/movie',animation.id]"
+          [routerLink]="['/movie', animation.id]"
         />
       </ng-container>
     </div>
@@ -117,7 +117,7 @@
           src="https://image.tmdb.org/t/p/original/{{ comedy.poster_path }}"
           class="row__img"
           alt="{{ comedy.name }}"
-          [routerLink]="['/movie',comedy.id]"
+          [routerLink]="['/movie', comedy.id]"
         />
       </ng-container>
     </div>
@@ -128,10 +128,12 @@
     <div class="row__poster">
       <ng-container *ngFor="let documentary of documentaryMovieResult">
         <img
-          src="https://image.tmdb.org/t/p/original/{{ documentary.poster_path }}"
+          src="https://image.tmdb.org/t/p/original/{{
+            documentary.poster_path
+          }}"
           class="row__img"
           alt="{{ documentary.name }}"
-          [routerLink]="['/movie',documentary.id]"
+          [routerLink]="['/movie', documentary.id]"
         />
       </ng-container>
     </div>
@@ -146,7 +148,7 @@
           src="https://image.tmdb.org/t/p/original/{{ sf.poster_path }}"
           class="row__img"
           alt="{{ sf.name }}"
-          [routerLink]="['/movie',sf.id]"
+          [routerLink]="['/movie', sf.id]"
         />
       </ng-container>
     </div>
@@ -161,7 +163,7 @@
           src="https://image.tmdb.org/t/p/original/{{ thriller.poster_path }}"
           class="row__img"
           alt="{{ thriller.name }}"
-          [routerLink]="['/movie',thriller.id]"
+          [routerLink]="['/movie', thriller.id]"
         />
       </ng-container>
     </div>
