@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { MovieApiService } from 'src/app/service/movie-api-service.service';
 
 @Component({
@@ -19,17 +20,51 @@ export class HomeComponent implements OnInit {
   comedyMovieResult: any = [];
   documentaryMovieResult: any = [];
   sciencefictionMovieResult: any = [];
-
+  genersResults: any = [];
   ngOnInit(): void {
     this.backdropData();
     this.trendingData();
-    this.actionMovie();
-    this.animationMovie();
-    this.adventureMovie();
-    this.documentaryMovie();
-    this.comedyMovie();
-    this.scienceFictionMovie();
-    this.thrillerMovie();
+    // this.actionMovie();
+    // this.animationMovie();
+    // this.adventureMovie();
+    // this.documentaryMovie();
+    // this.comedyMovie();
+    // this.scienceFictionMovie();
+    // this.thrillerMovie();
+    this.allData();
+  }
+  allData() {
+    forkJoin(
+      [
+        this.apiService.getActionMovies(),
+        this.apiService.getAnimationMovies(),
+        this.apiService.getAdventureMovies(),
+        this.apiService.getComedyMovies(),
+        this.apiService.getDocumentaryMovies(),
+        this.apiService.getThrillerMovies(),
+        this.apiService.getScienceFictionMovies(),
+      ],
+      (actionMovies, animationMovies, adventureMovies, comedyMovies, documentaryMovies, thrillerMovies, scienceMovies) => {
+        return {
+          action: actionMovies,
+          animation: animationMovies,
+          adventure: adventureMovies,
+          comedy: comedyMovies,
+          documentaryMovies: documentaryMovies,
+          thriller: thrillerMovies,
+          science: scienceMovies
+        };
+      }
+    ).subscribe((data) => {
+      console.log(data);
+      this.animationMovieResult = data.animation.results;
+      this.actionMovieResult = data.action.results
+      this.adventureMovieResult = data.adventure.results
+      this.comedyMovieResult = data.comedy.results
+      this.documentaryMovieResult = data.documentaryMovies.results
+      this.thrillerMovieResult = data.thriller.results
+      this.sciencefictionMovieResult = data.science.results
+    });
   }
 
   backdropData() {
@@ -44,59 +79,52 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // Action Movie
-  actionMovie() {
-    this.apiService.getActionMovies().subscribe((data) => {
-      console.log(data, 'action movie');
-      this.actionMovieResult = data.results;
-    });
-  }
+  // // Action Movie
+  // actionMovie() {
+  //   this.apiService.getActionMovies().subscribe((data) => {
+  //     this.actionMovieResult = data.results;
+  //   });
+  // }
 
-  // Action Movie
-  animationMovie() {
-    this.apiService.getAnimationMovies().subscribe((data) => {
-      console.log(data, 'animation movie');
-      this.animationMovieResult = data.results;
-    });
-  }
+  // // Action Movie
+  // animationMovie() {
+  //   this.apiService.getAnimationMovies().subscribe((data) => {
+  //     // this.animationMovieResult = data.results;
+  //   });
+  // }
 
-  // Adventure Movie
-  adventureMovie() {
-    this.apiService.getAdventureMovies().subscribe((data) => {
-      console.log(data, 'adventure movie');
-      this.adventureMovieResult = data.results;
-    });
-  }
+  // // Adventure Movie
+  // adventureMovie() {
+  //   this.apiService.getAdventureMovies().subscribe((data) => {
+  //     this.adventureMovieResult = data.results;
+  //   });
+  // }
 
-  // Comedy Movie
-  comedyMovie() {
-    this.apiService.getComedyMovies().subscribe((data) => {
-      console.log(data, 'comedy movie');
-      this.comedyMovieResult = data.results;
-    });
-  }
+  // // Comedy Movie
+  // comedyMovie() {
+  //   this.apiService.getComedyMovies().subscribe((data) => {
+  //     this.comedyMovieResult = data.results;
+  //   });
+  // }
 
-  // documentary Movie
-  documentaryMovie() {
-    this.apiService.getDocumentaryMovies().subscribe((data) => {
-      console.log(data, 'documentary movie');
-      this.documentaryMovieResult = data.results;
-    });
-  }
+  // // documentary Movie
+  // documentaryMovie() {
+  //   this.apiService.getDocumentaryMovies().subscribe((data) => {
+  //     this.documentaryMovieResult = data.results;
+  //   });
+  // }
 
-  // Thriller Movie
-  thrillerMovie() {
-    this.apiService.getThrillerMovies().subscribe((data) => {
-      console.log(data, 'thriller movie');
-      this.thrillerMovieResult = data.results;
-    });
-  }
+  // // Thriller Movie
+  // thrillerMovie() {
+  //   this.apiService.getThrillerMovies().subscribe((data) => {
+  //     this.thrillerMovieResult = data.results;
+  //   });
+  // }
 
-  // Scien-fiction Movie
-  scienceFictionMovie() {
-    this.apiService.getScienceFictionMovies().subscribe((data) => {
-      console.log(data, 'science movie');
-      this.sciencefictionMovieResult = data.results;
-    });
-  }
+  // // Scien-fiction Movie
+  // scienceFictionMovie() {
+  //   this.apiService.getScienceFictionMovies().subscribe((data) => {
+  //     this.sciencefictionMovieResult = data.results;
+  //   });
+  // }
 }
