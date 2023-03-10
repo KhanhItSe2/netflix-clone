@@ -13,6 +13,12 @@
   margin: 0 15px;
   font-weight: 200;
 }
+.navbar-nav .icon-user {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 0.4rem
+}
+
 .navbar-brand:hover,
 .nav-link:hover {
   opacity: 0.8;

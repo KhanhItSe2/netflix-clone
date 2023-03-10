@@ -14,15 +14,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ">
+      <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" routerLink="">Home</a>
         <a class="nav-link" routerLink="/search">Search</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link form-sign-in-up" routerLink="/sign-in">
+          <i class="icon-user fa-solid fa-user"></i>
+          Login/Register</a
+        >
       </div>
     </div>
   </div>
 </nav>
 <!-- navbar end -->
-
-
-
+<!-- <app-sign-in></app-sign-in> -->
 <router-outlet></router-outlet>
