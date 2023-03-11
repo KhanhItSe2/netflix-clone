@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { filter, startWith, Subject, switchMap, take, tap } from 'rxjs';
 
 const PASSWORD_PATTERN =
   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}';
@@ -38,10 +39,7 @@ const validateMatchedControlValue = (
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {}
-
+  formSubmit$ = new Subject<boolean | null>();
   signUpForm = this.fb.group(
     {
       username: [
@@ -70,6 +68,27 @@ export class SignUpComponent {
       validators: validateMatchedControlValue('password', 'passwordConfirm'),
     }
   );
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    // Check input and disable submit button
+    this.formSubmit$
+      .pipe(
+        tap(() => this.signUpForm.markAsDirty),
+        switchMap(() =>
+          this.signUpForm.statusChanges.pipe(
+            startWith(this.signUpForm.status),
+            filter((status) => status !== 'PENDING'),
+            take(1)
+          )
+        ),
+        filter((status) => status === 'VALID'),
+        tap(() => this.onSubmit())
+      )
+      .subscribe();
+  }
+
+
 
   onSubmit() {
     console.log(this.signUpForm.value);

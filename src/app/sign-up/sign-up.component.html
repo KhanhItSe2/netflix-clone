@@ -61,7 +61,6 @@
       class="passwordConfirm__input"
       placeholder="Repeat your password"
     />
-
     <ng-container *ngIf="signUpForm.touched && signUpForm.invalid">
       <span
         class="error-field"
@@ -92,7 +91,10 @@
         *Password is not matched
       </span>
     </ng-container>
-    <button type="submit" class="registerBtn">Register</button>
+    <button type="submit" class="registerBtn" [disabled]="signUpForm.invalid">
+      Register
+      
+    </button>
     <div class="footer">
       <span>Already have an account?</span><a routerLink="/sign-in"> Sign in</a>
     </div>
