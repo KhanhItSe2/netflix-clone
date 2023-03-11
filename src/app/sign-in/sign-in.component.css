@@ -79,6 +79,7 @@ h4 {
 }
 .footer a {
   color: #e50914;
+  text-decoration: none;
   margin-left: 6px;
 }
 .footer a:hover {

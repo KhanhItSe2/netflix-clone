@@ -1,1 +1,100 @@
-<p>sign-up works!</p>
+<!-- <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <form
+    action=""
+    class="sign-in-form"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h4>Create Account</h4>
+
+    <label for="username" class="username__title">Username</label>
+    <input
+      name="username"
+      type="text"
+      class="username__input"
+      formControlName="username"
+      placeholder="Your username"
+    />
+    <label for="email" class="email__title">Email address</label>
+    <input
+      name="email"
+      type="text"
+      class="email__input"
+      formControlName="email"
+      placeholder="Your email"
+    />
+
+    <label for="password" class="password__title">Password</label>
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      class="password__input"
+      placeholder="Your password"
+    />
+
+    <label for="passwordConfirm" class="passwordConfirm__title"
+      >Password confirmation</label
+    >
+    <input
+      type="password"
+      name="passwordConfirm"
+      formControlName="passwordConfirm"
+      class="passwordConfirm__input"
+      placeholder="Repeat your password"
+    />
+
+    <ng-container *ngIf="signUpForm.touched && signUpForm.invalid">
+      <span
+        class="error-field"
+        *ngIf="signUpForm.get('username')?.errors?.['required']"
+      >
+        *Username is required
+      </span>
+      <span
+        class="error-field"
+        *ngIf="signUpForm.get('email')?.errors?.['email']"
+      >
+        *Invalid email
+      </span>
+      <span
+        class="error-field"
+        *ngIf="signUpForm.get('password')?.errors?.['required']"
+      >
+        *Password is required
+      </span>
+      <span
+        class="error-field"
+        *ngIf="signUpForm.get('password')?.errors?.['pattern']"
+      >
+        *Password has at least 8 characters in length, Lowercase letters,
+        Uppercase letters , Numbers, Special characters
+      </span>
+      <span class="error-field" *ngIf="signUpForm.errors">
+        *Password is not matched
+      </span>
+    </ng-container>
+    <button type="submit" class="registerBtn">Register</button>
+    <div class="footer">
+      <span>Already have an account?</span><a routerLink="/sign-in"> Sign in</a>
+    </div>
+  </form>
+</div>
