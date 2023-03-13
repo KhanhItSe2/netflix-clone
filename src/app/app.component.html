@@ -1,3 +1,4 @@
+
 <!-- navbar star -->
 <nav class="navbar navbar-expand-lg fixed-top" [ngStyle]="navbg">
   <div class="container-fluid">
@@ -28,5 +29,9 @@
   </div>
 </nav>
 <!-- navbar end -->
+<div *ngIf="showLoader$ | async as showLoader">
+  <app-loading *ngIf="showLoader$"></app-loading>
+
+</div>
 <!-- <app-sign-in></app-sign-in> -->
 <router-outlet></router-outlet>

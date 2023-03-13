@@ -9,9 +9,10 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 import { HttpClientModule } from '@angular/common/http';
 import { MovieApiService } from './service/movie-api-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MovieDetailsComponent,
     SignUpComponent,
     SignInComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

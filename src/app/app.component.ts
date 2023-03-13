@@ -1,11 +1,13 @@
 import { Component, HostListener } from '@angular/core';
+import { LoaderService } from './service/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor() {}
+  showLoader$ = this.loaderService.loadingAction$;
+  constructor(private loaderService: LoaderService) {}
   title = 'netflix-clone';
   navbg: any;
   @HostListener('document:scroll') scrollover() {
@@ -18,5 +20,4 @@ export class AppComponent {
       this.navbg = {};
     }
   }
-
 }

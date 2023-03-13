@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { combineLatest, delay, forkJoin, tap } from 'rxjs';
+import { LoaderService } from 'src/app/service/loader.service';
 import { MovieApiService } from 'src/app/service/movie-api-service.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { MovieApiService } from 'src/app/service/movie-api-service.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private apiService: MovieApiService) {}
+  constructor(
+    private apiService: MovieApiService,
+    private loaderService: LoaderService
+  ) {}
 
   backdropResult: any = [];
   trendingMovieResult: any = [];
@@ -22,8 +26,9 @@ export class HomeComponent implements OnInit {
   sciencefictionMovieResult: any = [];
   genersResults: any = [];
   ngOnInit(): void {
-    this.backdropData();
-    this.trendingData();
+    this.loaderService.showLoader();
+    // this.backdropData();
+    // this.trendingData();
     // this.actionMovie();
     // this.animationMovie();
     // this.adventureMovie();
@@ -34,8 +39,11 @@ export class HomeComponent implements OnInit {
     this.allData();
   }
   allData() {
+
     forkJoin(
       [
+        this.apiService.backdropApiData(),
+        this.apiService.trendingApiData(),
         this.apiService.getActionMovies(),
         this.apiService.getAnimationMovies(),
         this.apiService.getAdventureMovies(),
@@ -44,40 +52,60 @@ export class HomeComponent implements OnInit {
         this.apiService.getThrillerMovies(),
         this.apiService.getScienceFictionMovies(),
       ],
-      (actionMovies, animationMovies, adventureMovies, comedyMovies, documentaryMovies, thrillerMovies, scienceMovies) => {
+      ( backdrop,
+        trending,
+        actionMovies,
+        animationMovies,
+        adventureMovies,
+        comedyMovies,
+        documentaryMovies,
+        thrillerMovies,
+        scienceMovies
+      ) => {
         return {
+          backdrop: backdrop,
+          trending: trending,
           action: actionMovies,
           animation: animationMovies,
           adventure: adventureMovies,
           comedy: comedyMovies,
           documentaryMovies: documentaryMovies,
           thriller: thrillerMovies,
-          science: scienceMovies
+          science: scienceMovies,
         };
       }
-    ).subscribe((data) => {
-      console.log(data);
-      this.animationMovieResult = data.animation.results;
-      this.actionMovieResult = data.action.results
-      this.adventureMovieResult = data.adventure.results
-      this.comedyMovieResult = data.comedy.results
-      this.documentaryMovieResult = data.documentaryMovies.results
-      this.thrillerMovieResult = data.thriller.results
-      this.sciencefictionMovieResult = data.science.results
-    });
+    )
+      .pipe(
+        delay(2000),
+        tap((data) => {
+          this.loaderService.hideLoader();
+        })
+      )
+      .subscribe((data) => {
+        console.log(data);
+        this.backdropResult = data.backdrop.results;
+        this.trendingMovieResult = data.trending.results;
+        this.animationMovieResult = data.animation.results;
+        this.actionMovieResult = data.action.results;
+        this.adventureMovieResult = data.adventure.results;
+        this.comedyMovieResult = data.comedy.results;
+        this.documentaryMovieResult = data.documentaryMovies.results;
+        this.thrillerMovieResult = data.thriller.results;
+        this.sciencefictionMovieResult = data.science.results;
+      });
   }
 
-  backdropData() {
-    this.apiService.backdropApiData().subscribe((data) => {
-      this.backdropResult = data.results;
-    });
-  }
+  // backdropData() {
+  //   this.apiService.backdropApiData().subscribe((data) => {
+  //     this.backdropResult = data.results;
+  //   });
+  // }
 
-  trendingData() {
-    this.apiService.trendingApiData().subscribe((data) => {
-      this.trendingMovieResult = data.results;
-    });
-  }
+  // trendingData() {
+  //   this.apiService.trendingApiData().subscribe((data) => {
+  //     this.trendingMovieResult = data.results;
+  //   });
+  // }
 
   // // Action Movie
   // actionMovie() {

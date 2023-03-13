@@ -24,16 +24,16 @@
       >
       <div class="detail__cast mt-3 mb-3">
         <h2 class="detail__cast__title">Top Cast</h2>
-        <div class="row ">
+        <div class="row">
           <div class="col-lg-4" *ngFor="let cast of getMovieCastResult">
-            <div class="row mt-2 mb-2" >
+            <div class="row mt-2 mb-2">
               <div class="col-lg-2" *ngIf="cast.profile_path">
                 <img
                   class="detail__cast__avatar"
                   src="https://image.tmdb.org/t/p/original/{{
                     cast.profile_path
                   }}"
-                  alt="{{cast.original_name}}"
+                  alt="{{ cast.original_name }}"
                 />
               </div>
               <div class="detail__cast__profile col-lg-10">
@@ -51,4 +51,7 @@
       ></video>
     </div> -->
   </div>
+</div>
+<div *ngIf="showLoader$ | async as showLoader">
+  <app-loading *ngIf="showLoader$"></app-loading>
 </div>
