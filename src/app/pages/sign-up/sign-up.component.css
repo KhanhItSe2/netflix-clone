@@ -43,9 +43,7 @@ h4 {
 .email__input:focus,
 .passwordConfirm__input:focus {
   border: solid 1px rgb(229, 9, 20);
-
 }
-
 
 .registerBtn {
   padding: 0.45rem 1.5rem;
@@ -55,7 +53,7 @@ h4 {
   border: none;
   background-color: #e50914;
   color: #000;
-  margin: 1rem 0  ;
+  margin: 1rem 0;
 }
 
 .registerBtn:hover {
@@ -81,5 +79,8 @@ h4 {
 }
 .error-field {
   color: #e50914;
-  margin-top: .4rem;
+  margin-top: 0.4rem;
+}
+.red-border-class {
+  border-color: #e50914;
 }

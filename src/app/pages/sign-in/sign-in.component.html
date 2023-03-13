@@ -27,6 +27,10 @@
 
     <label for="username" class="username__title">Your account</label>
     <input
+      [ngClass]="{
+        'red-border-class':
+          signInForm.get('username')?.errors && signInForm.touched
+      }"
       name="username"
       type="text"
       class="username__input"
@@ -36,6 +40,10 @@
 
     <label for="password" class="password__title">Password</label>
     <input
+      [ngClass]="{
+        'red-border-class':
+          signInForm.get('password')?.errors && signInForm.touched
+      }"
       type="password"
       name="password"
       formControlName="password"
@@ -43,7 +51,7 @@
       placeholder="Password"
     />
     <div class="forgot ms-auto"><a href="#">Forgot your password?</a></div>
-    <ng-container *ngIf="signInForm.touched && signInForm.invalid">
+    <ng-container *ngIf="signInForm.touched && signInForm.invalid ">
       <span
         class="error-field"
         *ngIf="signInForm.get('username')?.errors?.['required']"
@@ -66,8 +74,8 @@
         class="error-field"
         *ngIf="signInForm.get('password')?.errors?.['pattern']"
       >
-        *Password has at least 8 characters in length, Lowercase letters, Uppercase letters
-      , Numbers, Special characters
+        *Password has at least 8 characters in length, Lowercase letters,
+        Uppercase letters , Numbers, Special characters
       </span>
     </ng-container>
     <div class="checkbox">
@@ -78,9 +86,12 @@
       />
       Remember me
     </div>
-    <button type="submit" class="loginBtn">Login</button>
+
+      <button type="submit" class="loginBtn" [disabled]="signInForm.invalid">Login</button>
+
     <div class="footer">
-      <span> Don't have an account? </span><a routerLink="/sign-up"> Register</a>
+      <span> Don't have an account? </span
+      ><a routerLink="/sign-up"> Register</a>
     </div>
   </form>
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -28,5 +29,6 @@ export class SignInComponent {
 
   onSubmit() {
     console.log(this.signInForm.value);
+    this.router.navigate(['/home'])
   }
 }

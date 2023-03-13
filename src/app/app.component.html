@@ -29,9 +29,10 @@
   </div>
 </nav>
 <!-- navbar end -->
+<!-- Loader start -->
 <div *ngIf="showLoader$ | async as showLoader">
   <app-loading *ngIf="showLoader$"></app-loading>
-
 </div>
-<!-- <app-sign-in></app-sign-in> -->
+<!-- Loader end -->
+
 <router-outlet></router-outlet>

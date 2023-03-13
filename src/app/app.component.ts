@@ -8,7 +8,7 @@ import { LoaderService } from './service/loader.service';
 export class AppComponent {
   showLoader$ = this.loaderService.loadingAction$;
   constructor(private loaderService: LoaderService) {}
-  title = 'netflix-clone';
+  title = 'Movie On';
   navbg: any;
   @HostListener('document:scroll') scrollover() {
     console.log(document.body.scrollTop, 'scrolllength#');

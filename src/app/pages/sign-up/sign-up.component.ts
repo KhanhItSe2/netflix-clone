@@ -6,7 +6,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { filter, startWith, Subject, switchMap, take, tap } from 'rxjs';
 
 const PASSWORD_PATTERN =
@@ -68,7 +68,7 @@ export class SignUpComponent {
       validators: validateMatchedControlValue('password', 'passwordConfirm'),
     }
   );
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     // Check input and disable submit button
@@ -88,9 +88,8 @@ export class SignUpComponent {
       .subscribe();
   }
 
-
-
   onSubmit() {
     console.log(this.signUpForm.value);
+    this.router.navigate(['/sign-in']);
   }
 }

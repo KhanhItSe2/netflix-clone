@@ -37,7 +37,6 @@ h4 {
 .password__input:focus,
 .username__input:focus {
   border: solid 1px rgb(229, 9, 20);
-
 }
 .forgot a {
   text-decoration: none;
@@ -87,4 +86,8 @@ h4 {
 }
 .error-field {
   color: #e50914;
+}
+
+.red-border-class {
+  border-color: #e50914;
 }

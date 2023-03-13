@@ -32,6 +32,10 @@
       class="username__input"
       formControlName="username"
       placeholder="Your username"
+      [ngClass]="{
+        'red-border-class':
+          signUpForm.get('username')?.errors && signUpForm.touched
+      }"
     />
     <label for="email" class="email__title">Email address</label>
     <input
@@ -40,6 +44,10 @@
       class="email__input"
       formControlName="email"
       placeholder="Your email"
+      [ngClass]="{
+        'red-border-class':
+          signUpForm.get('email')?.errors && signUpForm.touched
+      }"
     />
 
     <label for="password" class="password__title">Password</label>
@@ -49,6 +57,11 @@
       formControlName="password"
       class="password__input"
       placeholder="Your password"
+      [ngClass]="{
+        'red-border-class':
+          signUpForm.get('password')?.errors &&
+          signUpForm.touched
+      }"
     />
 
     <label for="passwordConfirm" class="passwordConfirm__title"
@@ -60,6 +73,10 @@
       formControlName="passwordConfirm"
       class="passwordConfirm__input"
       placeholder="Repeat your password"
+      [ngClass]="{
+        'red-border-class':
+          signUpForm.get('passwordConfirm')?.errors && signUpForm.touched
+      }"
     />
     <ng-container *ngIf="signUpForm.touched && signUpForm.invalid">
       <span
@@ -67,6 +84,12 @@
         *ngIf="signUpForm.get('username')?.errors?.['required']"
       >
         *Username is required
+      </span>
+      <span
+        class="error-field"
+        *ngIf="signUpForm.get('username')?.errors?.['minlength']"
+      >
+        *Username length is less than 8 characters
       </span>
       <span
         class="error-field"
@@ -93,7 +116,6 @@
     </ng-container>
     <button type="submit" class="registerBtn" [disabled]="signUpForm.invalid">
       Register
-      
     </button>
     <div class="footer">
       <span>Already have an account?</span><a routerLink="/sign-in"> Sign in</a>
