@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { delay, tap } from 'rxjs';
+import { delay, filter, find, map, pluck, tap } from 'rxjs';
 import { LoaderService } from 'src/app/service/loader.service';
 import { MovieApiService } from 'src/app/service/movie-api-service.service';
 @Component({
@@ -36,11 +36,10 @@ export class MovieDetailsComponent implements OnInit {
         delay(2000),
         tap((data) => {
           this.loaderService.hideLoader();
-        })
+        }),
+        map((detail) => (this.getMovieDetailResult = detail))
       )
-      .subscribe((detail) => {
-        this.getMovieDetailResult = detail;
-      });
+      .subscribe();
   }
 
   getMovieVideo(id: any) {
@@ -50,15 +49,16 @@ export class MovieDetailsComponent implements OnInit {
         delay(2000),
         tap((data) => {
           this.loaderService.hideLoader();
-        })
+        }),
+        map((video) =>
+          video.results.find(
+            (result: any) =>
+              result.type === 'Trailer' || result.type == 'Teaser'
+          )
+        )
       )
       .subscribe((video) => {
-        console.log(video, 'video');
-        video.results.forEach((result: any) => {
-          if (result.type === 'Trailer' || result.type === 'Teaser') {
-            this.getMovieVideoResult = result.key;
-          }
-        });
+        this.getMovieVideoResult = video.key;
       });
   }
 
@@ -69,11 +69,9 @@ export class MovieDetailsComponent implements OnInit {
         delay(2000),
         tap((data) => {
           this.loaderService.hideLoader();
-        })
+        }),
+        map((cast) => (this.getMovieCastResult = cast.cast))
       )
-      .subscribe((cast) => {
-        console.log(cast, 'cast');
-        this.getMovieCastResult = cast.cast;
-      });
+      .subscribe();
   }
 }
