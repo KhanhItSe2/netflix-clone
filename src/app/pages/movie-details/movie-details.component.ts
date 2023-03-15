@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { delay, filter, find, map, pluck, tap } from 'rxjs';
 import { LoaderService } from 'src/app/service/loader.service';
@@ -9,6 +9,14 @@ import { MovieApiService } from 'src/app/service/movie-api-service.service';
   styleUrls: ['./movie-details.component.css'],
 })
 export class MovieDetailsComponent implements OnInit {
+  // Play video
+  @ViewChild('videoPlayer', { static: false })
+  videoPlayer!: ElementRef;
+  toggleVideo() {
+    this.videoPlayer.nativeElement.play();
+  }
+
+  // Loader
   showLoader$ = this.loaderService.loadingAction$;
   constructor(
     private apiService: MovieApiService,

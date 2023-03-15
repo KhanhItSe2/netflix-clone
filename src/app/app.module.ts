@@ -13,6 +13,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './pages/loading/loading.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
     SignUpComponent,
     SignInComponent,
     LoadingComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

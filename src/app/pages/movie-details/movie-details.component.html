@@ -46,9 +46,12 @@
       </div>
     </div>
     <!-- <div class="col-lg-10 mt-5 p-4">
-      <video
-        src="https://www.youtube.com/watch?v={{ getMovieVideoResult }}"
-      ></video>
+      <video (click)="toggleVideo()" #videoPlayer type="video/mp4">
+        <source
+          src="https://www.youtube.com/watch?v={{ getMovieVideoResult }}"
+          type="video/mp4"
+        />
+      </video>
     </div> -->
   </div>
 </div>
